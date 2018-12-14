@@ -13,7 +13,7 @@ import flatten from './shared/flatten'
   let people = state.firebase.data.people || {}
 
   if (todos) {
-    todos = Object.keys(todos)
+    todos = Object.values(todos)
   }
 
   if (people) {
@@ -29,16 +29,17 @@ export default class Todos extends React.Component {
   }
 
   render() {
+    console.log(this.props.todos)
     return (
       <View style={{ marginTop: 50, padding: 25 }}>
         {this.props.todos.map((todo, index) => {
           return (
             <TouchableHighlight
               key={index}
-              onPress={() => this._removeTodo(todo)}
+              onPress={() => this._removeTodo(todo.id)}
               underlayColor="transparent"
             >
-              <Text key={index}>{todo}</Text>
+              <Text key={index}>{todo.title}</Text>
             </TouchableHighlight>
           )
         })}
