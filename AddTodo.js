@@ -13,8 +13,6 @@ export default class AddTodo extends React.Component {
   }
 
   render() {
-    console.log(this.state.title)
-
     return (
       <View style={{ marginTop: 200 }}>
         <Text>+ Add ToDo</Text>
@@ -50,6 +48,8 @@ export default class AddTodo extends React.Component {
         },
       },
     }
+
+    this.setState({ title: '' })
 
     const databaseDiff = flatten(databaseDiffObj)
 
