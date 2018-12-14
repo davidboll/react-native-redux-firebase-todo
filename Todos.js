@@ -36,6 +36,7 @@ export default class Todos extends React.Component {
             <TouchableHighlight
               key={index}
               onPress={() => this._removeTodo(todo)}
+              underlayColor="transparent"
             >
               <Text key={index}>{todo}</Text>
             </TouchableHighlight>
@@ -47,8 +48,6 @@ export default class Todos extends React.Component {
 
   _removeTodo = async (todoId) => {
     const { firebase } = this.props
-
-    console.log('anything?', todoId)
 
     const databaseDiffObj = {
       todos: {
@@ -64,7 +63,6 @@ export default class Todos extends React.Component {
       await firebase.update('/', databaseDiff)
 
       return Promise.resolve()
-      this.setState({ title: '' })
     } catch (err) {
       return Promise.reject(err)
     }
