@@ -13,6 +13,8 @@ export default class AddTodo extends React.Component {
   }
 
   render() {
+    console.log(this.state.title)
+
     return (
       <View style={{ marginTop: 200 }}>
         <Text>Add ToDo</Text>
@@ -51,7 +53,7 @@ export default class AddTodo extends React.Component {
 
     const databaseDiff = flatten(databaseDiffObj)
 
-    console.info('databaseDiff: ', databaseDiff)
+    // console.info('databaseDiff: ', databaseDiff)
 
     try {
       await firebase.update('/', databaseDiff)
@@ -61,6 +63,6 @@ export default class AddTodo extends React.Component {
       return Promise.reject(err)
     }
 
-    // this.setState({ text: '' })
+    this.setState({ title: null })
   }
 }
